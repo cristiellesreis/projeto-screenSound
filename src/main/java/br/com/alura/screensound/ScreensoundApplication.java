@@ -1,6 +1,4 @@
 package br.com.alura.screensound;
-
-import br.com.alura.screensound.modelos.Artista;
 import br.com.alura.screensound.principal.Principal;
 import br.com.alura.screensound.repository.ArtistaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +20,5 @@ public class ScreensoundApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		Principal principal = new Principal(repositorio);
 		principal.exibeMenu();
-
-
 	}
 }

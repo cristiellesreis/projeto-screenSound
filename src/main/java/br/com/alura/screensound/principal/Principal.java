@@ -1,11 +1,10 @@
 package br.com.alura.screensound.principal;
+
 import br.com.alura.screensound.modelos.Artista;
 import br.com.alura.screensound.modelos.Musica;
 import br.com.alura.screensound.modelos.TipoArtista;
 import br.com.alura.screensound.repository.ArtistaRepository;
 import br.com.alura.screensound.servico.ConsultaGemini;
-
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
@@ -114,6 +113,5 @@ public class Principal {
             System.out.println("Cadastrar novo artista? (S/N)");
             cadastrarNovo = leitura.nextLine();
         }
-
     }
 }
