@@ -1,10 +1,11 @@
 package br.com.alura.screensound.principal;
-
 import br.com.alura.screensound.modelos.Artista;
 import br.com.alura.screensound.modelos.Musica;
 import br.com.alura.screensound.modelos.TipoArtista;
 import br.com.alura.screensound.repository.ArtistaRepository;
+import br.com.alura.screensound.servico.ConsultaGemini;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
@@ -63,15 +64,22 @@ public class Principal {
     }
 
     private void pesquisarDadosDoArtista() {
+        System.out.println("Pesquisar dados sobre qual artista? ");
+        var nome = leitura.nextLine();
+        var resposta = ConsultaGemini.obterInformacao(nome);
+        System.out.println(resposta.trim());
     }
 
     private void buscarMusicasPorArtista() {
-        
+        System.out.println("Buscar músicas de que artista? ");
+        var nome = leitura.nextLine();
+        List<Musica> musicas = repositorio.buscaMusicaPorArtista(nome);
+        musicas.forEach(System.out::println);
     }
 
     private void listarMusicas() {
         List<Artista> artistas = repositorio.findAll();
-        artistas.forEach(System.out::println);
+        artistas.forEach(a -> a.getMusicas().forEach(System.out::println));
     }
 
     private void cadastrarMusicas() {
@@ -105,7 +113,6 @@ public class Principal {
             repositorio.save(artista);
             System.out.println("Cadastrar novo artista? (S/N)");
             cadastrarNovo = leitura.nextLine();
-
         }
 
     }
